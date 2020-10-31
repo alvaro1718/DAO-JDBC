@@ -1,8 +1,8 @@
 package application;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import model.entities.Department;
 import model.entities.Seller;
@@ -20,13 +20,19 @@ public class Program {
 		
 		System.out.println(dept1.toString());
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+		String mydate = "11/04/1998 03:03:45";
+		
+		Seller seller;
+		
 		try {
-			Seller seller = new Seller(2,"ferros","ferros@ferros.pt",2344.0, new java.sql.Date(sdf.parse("11/12/1997").getTime()),dept1);
-			System.out.println(seller);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+				seller = new Seller(2,"ferros","ferros@ferros.pt",2344.0, simpleDateFormat.parse(mydate),dept1);
+				System.out.println(seller);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		
 	}
 }
