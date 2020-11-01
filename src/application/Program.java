@@ -23,10 +23,17 @@ public class Program {
 		System.out.println(seller.toString());
 		
 		System.out.println();
-		
 		System.out.println("---- TEST : Seller findByDepartment -----");
 		
 		java.util.List<Seller> sellerList = sellerDao.findByDepartment(seller.getDepartment());
+		for (Seller s : sellerList) {
+			System.out.println(s.toString());
+		}
+		
+		System.out.println();
+		System.out.println("---- TEST : Seller findByAll -----");
+		
+		sellerList = sellerDao.findAll();
 		for (Seller s : sellerList) {
 			System.out.println(s.toString());
 		}
