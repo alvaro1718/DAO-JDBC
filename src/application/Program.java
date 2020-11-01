@@ -14,8 +14,12 @@ public class Program {
 	public static void main(String [] args) {
 		
 		SellerDao sellerDao =	DaoFactory.createSellerDao();
-		Seller seller = sellerDao.findById(2);
+		
+		System.out.println("---- TEST : Seller findById -----");
+		Seller seller = sellerDao.findById(4);
 		
 		System.out.println(seller.toString());
+		
+		System.out.println("---- TEST : Seller findById -----");
 	}
 }
