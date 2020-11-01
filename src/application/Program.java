@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -32,6 +34,8 @@ public class Program {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		
+		SellerDao sellerDao =	DaoFactory.createSellerDao();
 			
 		
 	}
