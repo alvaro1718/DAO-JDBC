@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import model.dao.DaoFactory;
+import model.dao.DepartmentDao;
 import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
@@ -31,11 +32,21 @@ public class Program {
 		}
 		
 		System.out.println();
-		System.out.println("---- TEST : Seller findByAll -----");
+		System.out.println("---- TEST : Seller findAll -----");
 		
 		sellerList = sellerDao.findAll();
 		for (Seller s : sellerList) {
 			System.out.println(s.toString());
+		}
+		
+		System.out.println();
+		System.out.println("---- TEST : Department findAll -----");		
+		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
+		java.util.List<Department> deptList = departmentDao.findAll();
+		
+		for (Department dept : deptList) {
+			System.out.println(dept.toString());
+			
 		}
 	}
 }
