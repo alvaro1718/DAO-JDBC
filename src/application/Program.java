@@ -48,5 +48,11 @@ public class Program {
 			System.out.println(dept.toString());
 			
 		}
+		
+		System.out.println();
+		System.out.println("---- TEST : Department findById -----");		
+		
+		Department department = departmentDao.findById(2);
+		System.out.println(department.toString());
 	}
 }
