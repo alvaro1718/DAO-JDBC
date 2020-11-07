@@ -39,6 +39,14 @@ public class Program {
 			System.out.println(s.toString());
 		}
 		
+		
+		System.out.println();
+		System.out.println("---- TEST : Seller insert -----");		
+		
+		Seller seller_insert = new Seller(null, "Maria Insert", "TesteInsertet@gmail.com", 9000.0, new Date(), new Department(1,"Computers"));
+		sellerDao.insert(seller_insert);
+		System.out.println("Id gerado: "+seller_insert.getId());
+		
 		System.out.println();
 		System.out.println("---- TEST : Department findAll -----");		
 		DepartmentDao departmentDao = DaoFactory.createDepartmentDao();
@@ -54,5 +62,7 @@ public class Program {
 		
 		Department department = departmentDao.findById(2);
 		System.out.println(department.toString());
+		
+		
 	}
 }
