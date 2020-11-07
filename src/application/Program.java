@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
@@ -57,7 +58,9 @@ public class Program {
 		
 		System.out.println();
 		System.out.println("---- TEST : Seller delete -----");		
-		sellerDao.deleteById(15);
+		Scanner scanner = new Scanner(System.in);
+		//int id = scanner.nextInt();
+		//sellerDao.deleteById(id);
 		
 		System.out.println();
 		System.out.println("---- TEST : Department findAll -----");		
@@ -85,6 +88,8 @@ public class Program {
 		department.setName("ElectronicsUPDATE");
 		departmentDao.update(department);
 		
-		
+		System.out.println();
+		System.out.println("---- TEST : Department delete -----");
+		departmentDao.deleteById(8);
 	}
 }
