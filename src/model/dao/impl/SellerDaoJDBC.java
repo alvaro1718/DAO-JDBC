@@ -68,13 +68,52 @@ public class SellerDaoJDBC implements SellerDao{
 
 	@Override
 	public void update(Seller seller) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		int rowsAffected = 0;
+		try {
+			st = conn.prepareStatement("UPDATE coursejdbc.seller "
+					+"SET coursejdbc.seller.Name = ?, coursejdbc.seller.Email = ?, coursejdbc.seller.BirthDate = ?, coursejdbc.seller.BaseSalary =?, coursejdbc.seller.DepartmentId=? "
+					+ "WHERE (coursejdbc.seller.Id = ?)");
+			
+			st.setString(2, seller.getEmail());
+			st.setString(1, seller.getName());
+			st.setDate(3, new java.sql.Date( seller.getBirthDate().getTime()));
+			st.setDouble(4, seller.getBaseSalary());
+			st.setInt(5, seller.getDepartment().getId());
+			st.setInt(6, seller.getId());
+			
+			rowsAffected = st.executeUpdate();
+			
+			if (rowsAffected > 0) {
+				
+				System.out.println("Concluido! Linhas alteradas: "+rowsAffected);
+			}
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
 		
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		
+		PreparedStatement st = null;
+		
+		try {
+			st = conn.prepareStatement("delete from coursejdbc.seller where id = ?");
+			st.setInt(1, id);
+			int rowsAffected = st.executeUpdate();
+			
+			if ( rowsAffected > 0) {
+				System.out.println("DELETED! rows affected: "+rowsAffected);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

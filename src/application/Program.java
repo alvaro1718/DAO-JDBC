@@ -44,8 +44,20 @@ public class Program {
 		System.out.println("---- TEST : Seller insert -----");		
 		
 		Seller seller_insert = new Seller(null, "Maria Insert", "TesteInsertet@gmail.com", 9000.0, new Date(), new Department(1,"Computers"));
-		sellerDao.insert(seller_insert);
-		System.out.println("Id gerado: "+seller_insert.getId());
+		//sellerDao.insert(seller_insert);
+		//System.out.println("Id gerado: "+seller_insert.getId());
+		
+		System.out.println();
+		System.out.println("---- TEST : Seller update -----");		
+		
+		Seller seller_update = new Seller(9, "Maria Insert", "TesteUpdate@gmail.com", 1000.0, new Date(), new Department(3,""));
+		sellerDao.update(seller_update);
+		//System.out.println("Id gerado: "+seller_insert.getId());
+		
+		
+		System.out.println();
+		System.out.println("---- TEST : Seller delete -----");		
+		sellerDao.deleteById(15);
 		
 		System.out.println();
 		System.out.println("---- TEST : Department findAll -----");		
