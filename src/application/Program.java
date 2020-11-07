@@ -75,6 +75,11 @@ public class Program {
 		Department department = departmentDao.findById(2);
 		System.out.println(department.toString());
 		
+		System.out.println();
+		System.out.println("---- TEST : Department insert -----");		
+		Department dept_insert = new Department(null, "Happiness");
+		departmentDao.insert(dept_insert);
+		System.out.println("new dept id :"+dept_insert.getId());
 		
 	}
 }

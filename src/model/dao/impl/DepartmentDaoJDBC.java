@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import db.DB;
 import db.DbException;
 import model.dao.DepartmentDao;
 import model.entities.Department;
@@ -21,8 +23,33 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 	
 	@Override
 	public void insert(Department department) {
-		// TODO Auto-generated method stub
-		
+		PreparedStatement st = null;
+		int rowsAffected = 0;
+		try {
+			st = conn.prepareStatement("insert into coursejdbc.department (Name) values (?)",Statement.RETURN_GENERATED_KEYS);
+			st.setString(1, department.getName());
+			rowsAffected = st.executeUpdate();
+			
+			if (rowsAffected > 0) {
+				ResultSet rs = st.getGeneratedKeys();
+				if(rs.next()) {
+				int id = rs.getInt(1);
+				department.setId(id);
+				System.out.println("new id: " + id +" rows affected: "+rowsAffected);
+				}
+				DB.closeResultSet(rs);
+			}else
+			{
+				throw new DbException("ERROR!");
+				
+			}
+			
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
